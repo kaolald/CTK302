@@ -16,7 +16,8 @@ function draw() {
     text('they call me the PLACEHOLDER TEXT', width/2, height/2);
       break ;
     case 1:
-      text('BOTTOM TEXT', width/2, height - 50)
+      text('BOTTOM TEXT', width/2, height - 50);
+      text('TOP TEXT', width/2, 50);
       break ;
     case 2:
 
