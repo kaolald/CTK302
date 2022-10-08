@@ -1,8 +1,13 @@
 let state = 0 ;
 let timer = 0 ;
+let i1, i2, i3 ;
 
 function setup() {
   createCanvas(400, 400);
+  i1 = loadImage("assets/");
+  i2 = loadImage("assets/");
+  i3 = loadImage("assets/");
+
 }
 
 function draw() {
