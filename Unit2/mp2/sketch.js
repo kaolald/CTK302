@@ -8,6 +8,15 @@ let mic;
 let vol = 0;
 let mainFont;
 let secFont;
+let mus1, mus2, mus3, mus4 ;
+
+function preload() {
+  mus1 = loadSound("assets/music/mus1.mp3");
+  mus2 = loadSound("assets/music/mus2.mp3");
+  mus3 = loadSound("assets/music/mus3.mp3");
+  mus4 = loadSound("assets/music/mus4.wav");
+
+}
 
 function setup() {
   createCanvas(1080, 800);
@@ -26,6 +35,7 @@ function setup() {
   textFont(mainFont);
 }
 function draw() {
+
   switch (state) {
     case 0:
       background(56, 56, 56);
@@ -116,28 +126,39 @@ function draw() {
   }
 }
 
+
 function mousePressed() {
   //state++;
   if (mouseX > 50 && mouseX < 100 && mouseY > 50 && mouseY < 100) {
     state = 0;
+    mus1.stop();
+    mus2.stop();
+    mus3.stop(); 
+    mus4.stop();
   } else if (mouseX > 100 && mouseX < 300 && mouseY > 200 && mouseY < 500 && state == 0) {
     state = 1;
+    mus1.play();
     print('entering state 1');
   } else if (mouseX > 450 && mouseX < 650 && mouseY > 200 && mouseY < 500 && state == 0) {
     state = 2;
+    mus3.play();
     print('entering state 2');
   } else if (mouseX > 800 && mouseX < 1000 && mouseY > 200 && mouseY < 500 && state == 0) {
     state = 3;
+    mus2.play();
     print('entering state 3');
   } else if (mouseX > 450 && mouseX < 650 && mouseY > 200 && mouseY < 500 && state == 3) {
     state = 4;
+    mus2.stop();
     print('entering state 4');
   } else if (mouseX > 450 && mouseX < 650 && mouseY > 200 && mouseY < 500 && state == 4) {
     state = 5;
+    mus4.play();
     print('entering state 5');
   } else if (mouseX > 100 && mouseX < 300 && mouseY > 200 && mouseY < 500 && state == 5) {
     state = 4;
-    print('entering state 1');
+    mus4.stop();
+    print('re-entering state 4');
   } else if (mouseX > 800 && mouseX < 1000 && mouseY > 200 && mouseY < 500 && state == 4) {
     state = 6;
     print('entering state 6');
