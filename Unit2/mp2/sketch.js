@@ -3,8 +3,11 @@ let textPosX;
 let textPosY;
 let door;
 let arrow;
+let hobart;
 let mic;
 let vol = 0;
+let mainFont;
+let secFont;
 
 function setup() {
   createCanvas(1080, 800);
@@ -15,8 +18,12 @@ function setup() {
   textPosY = height - 100;
   door = loadImage("assets/door.png");
   arrow = loadImage("assets/arrow.png");
-  mic = new p5.AudioIn(); // what does "new" mean?
+  hobart = loadImage("assets/hobart.jpg");
+  mic = new p5.AudioIn();
   mic.start();
+  mainFont = loadFont("assets/fonts/BOD_B.TTF");
+  secFont = loadFont("assets/fonts/BAUHS93.TTF");
+  textFont(mainFont);
 }
 function draw() {
   switch (state) {
@@ -43,7 +50,7 @@ function draw() {
       background(92, 22, 28);
       text("where are you running?", textPosX, textPosY);
       fill("black");
-      iamge(arrow, 50, 50, 50, 50);
+      image(arrow, 50, 50, 50, 50);
       //run, go back
       break;
     case 3:
@@ -82,7 +89,7 @@ function draw() {
   }
        vol = mic.getLevel(); // returned level is between 0 and 1
 
-  // text on the screen for debugging
+  //debug option (comment out this chunk)
   textSize(18);
   text(
     "Click the screen first to give\npermission for mic input.\nMy volume is " +
@@ -94,8 +101,10 @@ function draw() {
       //have graphic to indicate the player to do something other than click on an object
       break;
     case 7:
-      background(220);
+      background(56, 44, 32);
       fill("orange");
+      image(hobart, 300, 200, 500, 400);
+      textFont(secFont);
       text(
         "Happy Spooky Month, this is my pumpkin Hobart!",
         textPosX,
