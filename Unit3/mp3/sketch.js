@@ -158,7 +158,6 @@ class bullet {
     this.a = this.a - 3 ;
   }
 } 
-=======
 function setup() {
   createCanvas(500, 500);
 }
@@ -166,4 +165,3 @@ function setup() {
 function draw() {
 
 }
->>>>>>> 337d159f41eacaf79a2ed9ea67c083a921e4ace7
