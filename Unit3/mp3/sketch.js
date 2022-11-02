@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 let fires = [];
 let bullets = [];
 let frogPos;
@@ -28,8 +27,8 @@ function draw() {
   
   switch(state) {
     case 0: //menu
-      fill(0);
-      text("the one piece is real", width/2, height/2);
+      background(0);
+      text("Fire Fighter Deluxe Pro DX LE", width/2, height/2);
       break ;
     case 1: //game
       game();
@@ -40,18 +39,27 @@ function draw() {
       }
       break;
     case 2: //menu
-      fill(0);
-      text("congration, youre winner", width/2, height/2);
+      background(0);
+      text("The Fire is out and the Theater is Saved!", width/2, height/2);
       break ;
     case 3: //menu
       background(0);
       fill(255);
-      text("theyre coming after you", width/2, height/2);
+      text("The Theater has burned to the ground, thankfully everyone got out in time.", width/2, height/2);
       break ;
     
   }
-}
 
+  if (keyIsDown(SHIFT)) {
+    for (let i = 0; i < bullets.length; i++) {
+      bullet[i].display();
+      bullet[i].move();
+        if (bullets[i].a <= 0) {
+          bullets.splice(i, 1) ;
+      }
+    }
+  }
+}
 function mouseReleased() {
   switch(state) {
     case 0: //menu
@@ -59,7 +67,7 @@ function mouseReleased() {
       break;
     case 2: //win
       state = 0
-      spawnMaster();
+      respawnMaster();
       break;
     case 3: //lose
       state = 0
@@ -67,7 +75,6 @@ function mouseReleased() {
       break;
   }
 }
-
 
 
 function game() {
@@ -105,12 +112,6 @@ function checkForKeys() {
   if (keyIsDown(RIGHT_ARROW)) frogPos.x += sens;
   if (keyIsDown(UP_ARROW)) frogPos.y -= sens;
   if (keyIsDown(DOWN_ARROW)) frogPos.y += sens;
-  if (keyIsDown(SHIFT)) {
-    for (let i = 0; i < 1; i++) {
-      bullets.push(new bullet());
-      print("fired");
-    }
-  }
 }
 
 class Fire {
@@ -157,4 +158,4 @@ class bullet {
     this.pos.add(this.vel) ;
     this.a = this.a - 3 ;
   }
-} 
+}
